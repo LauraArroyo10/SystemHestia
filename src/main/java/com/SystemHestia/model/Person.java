@@ -2,24 +2,24 @@ package com.SystemHestia.model;
 
 public class Person {
 
-   String id;
+   Integer id;
    String username;
    Profile profile;
 
     public Person() {
     }
 
-    public Person(String id, String username, Profile profile) {
+    public Person(Integer id, String username, Profile profile) {
         this.id = id;
         this.username = username;
         this.profile = profile;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
