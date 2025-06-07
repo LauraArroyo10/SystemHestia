@@ -1,9 +1,15 @@
 package com.SystemHestia.model;
 
-public class Person {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Person {
+    @JsonProperty("id")
    Integer id;
+    @JsonProperty("username")
    String username;
+    @JsonProperty("profile")
    Profile profile;
 
     public Person() {
