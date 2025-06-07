@@ -1,9 +1,11 @@
 package com.SystemHestia.repository;
 
 import com.SystemHestia.model.Patient;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
-
+@Repository
 public class PatientRepository  extends CRUDMemory<Patient>{
 
     private ArrayList<Patient> data= new ArrayList<>();
@@ -16,6 +18,8 @@ public class PatientRepository  extends CRUDMemory<Patient>{
     public ArrayList<Patient>getAll(){
         return data;
     }
+
+
     //GET BY ID
     public Patient findById(Integer id){
         for(Patient element: data){
@@ -25,6 +29,7 @@ public class PatientRepository  extends CRUDMemory<Patient>{
         }
         return null;
     }
+
 
     //POST
     public Patient add(Patient patient){

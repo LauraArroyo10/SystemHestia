@@ -3,9 +3,10 @@ package com.SystemHestia.service;
 import com.SystemHestia.model.Patient;
 import com.SystemHestia.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
+@Service
 public class PatientService {
 
     @Autowired
@@ -17,8 +18,7 @@ public class PatientService {
         return repository.getAll();
     }
     //GET SPACE BY ID
-    public Patient findById(Integer id){
-        return repository.findById(id);}
+    public Patient findById(Integer id){return repository.findById(id);}
     //POST SPACE
     public Patient add(Patient patient){
         return repository.add(patient);

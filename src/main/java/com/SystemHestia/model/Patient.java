@@ -1,5 +1,8 @@
 package com.SystemHestia.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patient extends Person implements Identifiable{
     private String identification;
     private String age;
@@ -9,6 +12,24 @@ public class Patient extends Person implements Identifiable{
 
     public Patient() {
     }
+
+    public Patient(String identification, String age, String conditions, Disease diseases, String allergies) {
+        this.identification = identification;
+        this.age = age;
+        this.conditions = conditions;
+        this.diseases = diseases;
+        this.allergies = allergies;
+    }
+
+    public Patient(Integer id, String username, Profile profile, String identification, String age, String conditions, Disease diseases, String allergies) {
+        super(id, username, profile);
+        this.identification = identification;
+        this.age = age;
+        this.conditions = conditions;
+        this.diseases = diseases;
+        this.allergies = allergies;
+    }
+
 
     public String getIdentification() {
         return identification;

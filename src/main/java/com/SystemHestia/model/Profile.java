@@ -1,5 +1,8 @@
 package com.SystemHestia.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Profile {
     //profile constants
     public static final String ADMIN = "Administrador";
