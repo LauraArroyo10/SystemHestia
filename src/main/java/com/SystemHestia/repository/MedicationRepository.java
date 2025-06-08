@@ -43,7 +43,7 @@ public class MedicationRepository extends CRUDMemory<Medication>{
     //DELETE
     public Medication delete(Integer id){
         for(int element=0;element<data.size();element++){
-            if(data.get(element).getId()==id){//data.get(element).getId()==id){
+            if(data.get(element).getId()==id){
                 return data.remove(element);
             }
         }
