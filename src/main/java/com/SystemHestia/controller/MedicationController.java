@@ -1,5 +1,6 @@
 package com.SystemHestia.controller;
 import com.SystemHestia.model.Medication;
+import com.SystemHestia.service.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,11 +33,11 @@ public class MedicationController {
         return service.update(medication);
     }
 
-    //DELETE
-    @DeleteMapping("{id}")
-    public Medication delete(@PathVariable int id){
-        return service.delete(id);
-    }
+//    //DELETE       COMENTARIO
+//    @DeleteMapping("{id}")
+//    public Medication delete(@PathVariable int id){
+//        return service.delete(id);
+//    }
 
     //PATCH
     @PatchMapping
