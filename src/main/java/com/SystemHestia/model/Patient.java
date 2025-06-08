@@ -13,7 +13,7 @@ public class Patient extends Person implements Identifiable{
     public Patient() {
     }
 
-    public Patient(Integer id, String username, Profile profile, String identification, String age, String conditions, Disease diseases, String allergies) {
+    public Patient(Integer id, String username, Role profile, String identification, String age, String conditions, Disease diseases, String allergies) {
         super(id, username, profile);
         this.identification = identification;
         this.age = age;
