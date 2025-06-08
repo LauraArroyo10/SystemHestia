@@ -2,8 +2,7 @@ package com.SystemHestia.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Profile {
+public class Role {
     //profile constants
     public static final String ADMIN = "Administrador";
     public static final String VIEWER = "Espectador";
@@ -12,10 +11,10 @@ public class Profile {
     private String role;
 
 
-    public Profile() {
+    public Role() {
     }
 
-    public Profile(String id, String role) {
+    public Role(String id, String role) {
         this.id = id;
         this.role = role;
     }
