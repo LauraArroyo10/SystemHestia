@@ -19,4 +19,5 @@ public class Medication implements Identifiable{
     private String instructions;
     private String type;
 
+
 }
