@@ -31,5 +31,6 @@ public class PatientService {
     public Patient delete(Integer id){
         return repository.delete(id);
     }
-
+    //PATCH SPACE
+    public Patient  edit (Patient patient){return repository.edit(patient);}
 }

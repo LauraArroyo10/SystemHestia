@@ -41,8 +41,11 @@ public ArrayList<Patient>getAll(){
     return service.delete(id);
     }
 //PATCH
-    @PatchMapping
-    public Patient patch(@RequestBody int id){
-    return null;
-    }
+@PatchMapping
+public Patient patchSpace (@RequestBody Patient patient) {
+
+    return service.edit(patient);
+}
+
+
 }
