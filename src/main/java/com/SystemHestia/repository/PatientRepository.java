@@ -37,7 +37,7 @@ public class PatientRepository  extends CRUDMemory<Patient>{
         return patient;
     }
 
-    //PUT
+    //PATCH
     @Override
     public Patient edit(Patient patient) {
         for (Patient element : data) {
@@ -81,6 +81,7 @@ public class PatientRepository  extends CRUDMemory<Patient>{
     }
 
 
+    //PUT
     public Patient update(Patient element) {
         for(int index=0; index < data.size(); index++){
             if(data.get(index).getId().intValue()==element.getId().intValue()){
@@ -89,7 +90,7 @@ public class PatientRepository  extends CRUDMemory<Patient>{
         }
         return null;
     }
-    //PATCH
+
 
 
 
