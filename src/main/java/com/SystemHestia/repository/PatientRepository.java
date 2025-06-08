@@ -81,6 +81,14 @@ public class PatientRepository  extends CRUDMemory<Patient>{
     }
 
 
+    public Patient update(Patient element) {
+        for(int index=0; index < data.size(); index++){
+            if(data.get(index).getId().intValue()==element.getId().intValue()){
+                return data.set(index, element);
+            }
+        }
+        return null;
+    }
     //PATCH
 
 
