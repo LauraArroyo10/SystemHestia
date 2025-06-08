@@ -72,7 +72,6 @@ public class Patient extends Person implements Identifiable{
     }
 
 
-
 //    public String getProperty(int index) {
 //        switch (index) {
 //            case 0:
