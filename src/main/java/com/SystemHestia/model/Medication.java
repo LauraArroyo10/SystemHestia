@@ -10,7 +10,7 @@ import lombok.*;
 
 public class Medication implements Identifiable{
 
-    private String id;
+    private Integer id;
     private String identification;
     private String name;
     private String expirationDate;
@@ -18,5 +18,6 @@ public class Medication implements Identifiable{
     private String sideEffects;
     private String instructions;
     private String type;
+
 
 }
