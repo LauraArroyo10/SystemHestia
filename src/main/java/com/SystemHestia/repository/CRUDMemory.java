@@ -1,6 +1,8 @@
 package com.SystemHestia.repository;
 
 import com.SystemHestia.model.Identifiable;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 
@@ -49,5 +51,7 @@ protected ArrayList<T> data= new ArrayList<>();
         }
         return null;
     }
+
+
 
 }//class end
