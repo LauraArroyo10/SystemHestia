@@ -21,8 +21,8 @@ public class Patient extends Person implements Identifiable{
         this.allergies = allergies;
     }
 
-    public Patient(Integer id, String username, Profile profile, String identification, String age, String conditions, Disease diseases, String allergies) {
-        super(id, username, profile);
+    public Patient(Integer id, String username, Role role, String identification, String age, String conditions, Disease diseases, String allergies) {
+        super(id, username, role);
         this.identification = identification;
         this.age = age;
         this.conditions = conditions;

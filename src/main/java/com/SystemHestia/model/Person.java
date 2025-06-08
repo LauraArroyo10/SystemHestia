@@ -10,15 +10,15 @@ public class Person {
     @JsonProperty("username")
    String username;
     @JsonProperty("profile")
-   Profile profile;
+    Role role;
 
     public Person() {
     }
 
-    public Person(Integer id, String username, Profile profile) {
+    public Person(Integer id, String username, Role role) {
         this.id = id;
         this.username = username;
-        this.profile = profile;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -37,12 +37,12 @@ public class Person {
         this.username = username;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Role getProfile() {
+        return role;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setProfile(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Person {
         return "Person{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", profile=" + profile +
+                ", profile=" + role +
                 '}';
     }
 }

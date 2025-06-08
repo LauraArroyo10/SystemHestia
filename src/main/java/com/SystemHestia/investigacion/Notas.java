@@ -7,3 +7,6 @@
 //import com.fasterxml.jackson.annotation.JsonProperty;
 //@JsonProperty:
 //fuerza a que se anadan los atributos al json
+
+// Spring Security
+//https://www.youtube.com/watch?v=nwqQYCM4YT8
