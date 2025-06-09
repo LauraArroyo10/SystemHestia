@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@RequestMapping ("/medications")
+@RestController
+
 public class MedicationController {
     @Autowired
     MedicationService service;
