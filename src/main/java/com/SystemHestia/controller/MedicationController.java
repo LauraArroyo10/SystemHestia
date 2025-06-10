@@ -36,11 +36,11 @@ public class MedicationController {
         return service.update(medication);
     }
 
-//    //DELETE       COMENTARIO
-//    @DeleteMapping("{id}")
-//    public Medication delete(@PathVariable int id){
-//        return service.delete(id);
-//    }
+    //DELETE       COMENTARIO
+    @DeleteMapping("{id}")
+    public Medication delete(@PathVariable int id){
+        return service.delete(id);
+    }
 
     //PATCH
     @PatchMapping

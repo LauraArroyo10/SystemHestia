@@ -31,9 +31,9 @@ public class MedicationService {
         return repository.update(medication);
     }
     //DELETE SPACE
-//    public Medication delete(Medication id){
-//        return repository.delete(id);
-//    }
+    public Medication delete(Integer id){
+        return repository.delete(id);
+    }
     //PATCH SPACE
     public Medication  edit (Medication medication){return repository.edit(medication);}
 
