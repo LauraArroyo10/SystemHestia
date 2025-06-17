@@ -1,5 +1,5 @@
-package com.SystemHestia.model;
-import jakarta.persistence.*;
+package com.SystemHestia.dto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,14 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "diseases")
-public class Disease {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DiseaseDTO {
     private Integer id;
     private String name;
     private String description;
     private String recommendation;
-
-}//class end
+}
