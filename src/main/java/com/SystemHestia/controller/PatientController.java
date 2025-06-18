@@ -28,6 +28,8 @@ public ResponseEntity<?> getAll(){
 }
 
 
+
+
 //GET ALL BY ID
 @GetMapping ("{id}")
     public Patient get(@PathVariable int id){
@@ -62,7 +64,6 @@ public ResponseEntity<?> getAll(){
 //PATCH
 @PatchMapping
 public ResponseEntity<?> patch (@RequestBody Patient patient) {
-
     return ResponseEntity.ok(service.edit(patient));
 }
 

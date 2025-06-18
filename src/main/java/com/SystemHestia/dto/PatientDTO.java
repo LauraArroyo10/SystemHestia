@@ -10,8 +10,13 @@ import lombok.*;
 @NoArgsConstructor
 public class PatientDTO {
     private Integer id;
-    private String age;
+    private Integer age;
     private String conditions;
-    private Disease diseases;
     private String allergies;
-}
+    private String description;
+    private DiseaseDTO primaryDisease;
+    private String name;
+    private String role;
+}//class end
+
+

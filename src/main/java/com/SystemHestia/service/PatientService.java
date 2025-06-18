@@ -18,19 +18,27 @@ public class PatientService {
 
     //GET ALL
     public List<Patient> getAll() {
+
         return repository.findAll();
     }
 
 
     //GET BY ID
+//    public Patient findById(Integer id) {
+//        Optional<Patient> patient = repository.findById(id);
+//        if (patient.isPresent()) {
+//            return patient.get();
+//        }
+//        return null;
+  //  }
+
     public Patient findById(Integer id) {
         Optional<Patient> patient = repository.findById(id);
-        if (patient.isPresent()) {
-            return patient.get();
+        if (patient.isEmpty()) {
+            throw new RuntimeException("Paciente no encontrado");
         }
         return null;
     }
-
 
     //POST
     public Patient add(Patient patient) {
@@ -53,8 +61,8 @@ public class PatientService {
             if (patient.getConditions() != null) {
                 element.setConditions(patient.getConditions());
             }
-            if (patient.getDiseases() != null) {
-                element.setDiseases(patient.getDiseases());
+            if (patient.getPrimaryDisease() != null) {
+                element.setPrimaryDisease(patient.getPrimaryDisease());
             }
             if (patient.getId() != null) {
                 element.setId(patient.getId());

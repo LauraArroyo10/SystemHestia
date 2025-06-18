@@ -25,5 +25,4 @@ public class Medication{
     private LocalDate expirationDate;
     private BigDecimal quantity;
 
-
 }
