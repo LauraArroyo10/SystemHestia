@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -19,12 +20,12 @@ public class PatientController {
 
 //GET ALL
 @GetMapping
-public ResponseEntity<?> getAll(){
-    List<?> patients = service.getAll();
-    if(patients ==null || patients.isEmpty()){
-        return ResponseEntity.ok("No existe ese paciente");
+public ResponseEntity<List<Patient>> getAll() {
+    List<Patient> patients = service.getAll();
+    if (patients.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Collections.emptyList());
     }
-    return ResponseEntity.ok(service.getAll());
+    return ResponseEntity.ok(patients);
 }
 
 

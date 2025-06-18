@@ -13,3 +13,5 @@
 
 
 //https://docs.oracle.com/en/java/javase/21/docs//api/java.base/java/math/BigDecimal.html
+
+//fetch = FetchType.LAZY → Specifies lazy loading, meaning the related entity is only fetched from the database when needed.

@@ -1,7 +1,6 @@
 package com.SystemHestia.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Table(name = "patients")
 public class Patient{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +21,16 @@ public class Patient{
     private String description;
 
     @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease primaryDisease;
 
-    @JsonProperty("name")
+
     private String name;
 
 
-    @JsonProperty("role")
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
