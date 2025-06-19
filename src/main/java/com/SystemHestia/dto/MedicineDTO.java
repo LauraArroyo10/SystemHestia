@@ -1,22 +1,22 @@
-package com.SystemHestia.model;
+package com.SystemHestia.dto;
 
-import jakarta.persistence.*;
-import lombok.*;
+import com.SystemHestia.model.MedicineType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
 @Setter
-@ToString
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "medications")
+@AllArgsConstructor
 
-public class Medicine {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MedicineDTO {
     private Integer id;
     private String identification;
     private String name;
@@ -24,9 +24,5 @@ public class Medicine {
     private String instructions;
     private LocalDate expirationDate;
     private BigDecimal quantity;
-    @Enumerated(EnumType.STRING)
     private MedicineType medicineType;
-
-
-
 }
