@@ -6,25 +6,26 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-//es nuestra entidad
-
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+public class Report {
 
-public class Report implements  Identifiable {
-@Id
-@GeneratedValue  (strategy = GenerationType.IDENTITY)
-
-   //atributos agregar mas
-   private Integer Id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Integer id;
 
    private String title;
    private String date;
    private String category;
+   private  String  description;
+   //private  Treatment treatment;
+
+   private Patient  patient;
+   //private  Medicine medicine;
 
 
 }
