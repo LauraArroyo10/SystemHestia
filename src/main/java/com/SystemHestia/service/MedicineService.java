@@ -2,7 +2,7 @@ package com.SystemHestia.service;
 
 
 import com.SystemHestia.model.Medicine;
-import com.SystemHestia.repository.MedicationRepositoryJPA;
+
 import com.SystemHestia.repository.MedicineRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
