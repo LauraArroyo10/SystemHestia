@@ -22,6 +22,7 @@ public class Patient{
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease primaryDisease;
 
