@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -21,6 +20,8 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         User user = userService.getUserById(id);
@@ -30,14 +31,16 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(201).body(createdUser);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<User> createRegisterUser(@Valid @RequestBody UserDTO userDTO) {
+    @PostMapping("/signUp")
+    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
         User createdUser = userService.createUser(new User());
         return ResponseEntity.status(201).body(createdUser);
     }

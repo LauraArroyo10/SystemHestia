@@ -15,6 +15,6 @@ public class UserDTO {
             regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()]).{8,}$",
             message = "Debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.")
     private String password;
-    private String rol;
+    private String role;
 
 }
