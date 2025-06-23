@@ -21,11 +21,7 @@ public class UserService {
     }
 
     public User getUserById(Integer id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-            return user.get();
-        }
-        return null;
+        return userRepository.findById(id).get();
     }
     public User createUser(User user) {
         return userRepository.save(user);
@@ -74,6 +70,10 @@ public class UserService {
     public boolean existsById(Integer id) {
         return userRepository.existsById(id);
     }
+
+
+
+
 
 
 }
