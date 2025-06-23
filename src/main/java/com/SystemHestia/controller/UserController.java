@@ -41,16 +41,6 @@ public class UserController {
         return ResponseEntity.status(201).body(createdUser);
     }
 
-    @PostMapping("/signUp")
-    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setRole(Role.valueOf(userDTO.getRole()));
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
-    }
 
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -83,17 +73,20 @@ public class UserController {
     }
 
 
-
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
-        User user = userService.getUserByEmail(loginDTO.getEmail());
-
-        if (user != null && user.getPassword().equals(loginDTO.getPassword())) {
-            return ResponseEntity.ok(user); // O podés devolver solo algunos datos si querés más seguridad
-        } else {
-            return ResponseEntity.status(401).body("Credenciales inválidas");
-        }
+//Registrarse
+    @PostMapping("/signUp")
+    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+        user.setRole(Role.valueOf(userDTO.getRole()));
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.status(201).body(createdUser);
     }
 
-}
+//Entrar como admin
+//Entrar como invitado
+//Entrar como menor de edad
+
+}//class ends

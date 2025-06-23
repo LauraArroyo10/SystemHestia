@@ -41,7 +41,7 @@ public class MedicineController {
 
     //POST
     @PostMapping
-    public Medicine post(@Valid @RequestBody Medicine medicine){
+    public Medicine post(@RequestBody Medicine medicine){
         return service.add(medicine);
     }
 

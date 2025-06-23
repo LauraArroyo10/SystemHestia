@@ -1,7 +1,4 @@
 package com.SystemHestia.service;
-
-import com.SystemHestia.model.Disease;
-import com.SystemHestia.model.Patient;
 import com.SystemHestia.model.User;
 import com.SystemHestia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +25,10 @@ public class UserService {
         return null;
     }
     public User createUser(User user) {
+
         return userRepository.save(user);
     }
+
     public User updateUser(User user) {
         if (userRepository.existsById(user.getId())) {
             return userRepository.save(user);

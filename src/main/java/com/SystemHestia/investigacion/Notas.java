@@ -22,3 +22,5 @@
 
 // @ToString.Exclude:Es una anotación de Lombok que evita que un campo se incluya automáticamente en
 // //el metodo toString() que genera @ToString.
+
+//usos de dtos para manejar accesos: https://www.youtube.com/shorts/eMvI1xF1nS8

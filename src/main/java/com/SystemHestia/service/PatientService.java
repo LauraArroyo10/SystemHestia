@@ -1,5 +1,4 @@
 package com.SystemHestia.service;
-
 import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Patient;
 import com.SystemHestia.repository.DiseaseRepositoryJPA;

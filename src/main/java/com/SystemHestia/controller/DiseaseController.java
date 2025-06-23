@@ -1,9 +1,7 @@
 package com.SystemHestia.controller;
 
 import com.SystemHestia.model.Disease;
-import com.SystemHestia.model.Patient;
 import com.SystemHestia.service.DiseaseService;
-import com.SystemHestia.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
