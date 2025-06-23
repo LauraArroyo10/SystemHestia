@@ -15,19 +15,24 @@ import java.time.LocalDateTime;
 public class Treatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+
     @Column(name = "id", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "medicine_id", nullable = false)
     private Medicine medicine;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease disease;
+
 
     @Column(nullable = false)
     private String dosage;
@@ -43,12 +48,9 @@ public class Treatment {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private Status Status;
+    private Status status;
 
     @Column(length = 500)
     private String observations;
-
-    @Column(name = "responsible_doctor")
-    private String responsibleDoctor;
 
 }
