@@ -74,5 +74,12 @@ public class MedicineController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El id "+medicine.getId()+" no está registrado");
     }
 
+    @GetMapping("/count")
+    public long countAvailableMedicines() {
+        return service.countAvailableMedicines();
+
+    }
+
+
 
 }

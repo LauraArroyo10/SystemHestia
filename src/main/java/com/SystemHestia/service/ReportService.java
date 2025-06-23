@@ -8,55 +8,65 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class ReportService {
+
     @Autowired
     ReportJpaRepository reportRepository;
-// OBTNER TODOS LOS REPORTES
-    public List<Report> getAll(){return reportRepository.findAll();}
-// consultar cantidad de medicamentos disponibles
 
-// mio
+    // OBTENER TODOS LOS REPORTES
+    public List<Report> getAll() {
+        return reportRepository.findAll();
+    }
 
+    // OBTENER REPORTES DE PACIENTE
+    public List<Report> getReportsByPatientId(Integer patientId) {
+        return reportRepository.findByPatientId(patientId);
+    }
 
-    // Obtener reporte por ID
+    // OBTENER REPORTES DE MEDICAMENTOS (si activás la relación)
+    public List<Report> getReportsByMedicineId(Integer medicineId) {
+        return reportRepository.findByMedicineId(medicineId);
+    }
+
+    // AÑADIR NUEVO REPORTE
+    public Report add(Report report) {
+        return reportRepository.save(report);
+    }
+
+    // OBTENER REPORTE POR ID
     public Optional<Report> getById(Integer id) {
         return reportRepository.findById(id);
     }
 
-    // Obteber reportes de paciente
-
-
-    //obtener reportes de medicamentos
-
-    // Eliminar reporte
+    // ELIMINAR REPORTE
     public Optional<Report> delete(Integer id) {
         Optional<Report> report = reportRepository.findById(id);
         report.ifPresent(r -> reportRepository.deleteById(id));
         return report;
     }
-    //ediatar reportes
 
-        // Editar reporte (actualizarlo)
-        public Optional<Report> edit(Report report) {
-            Optional<Report> existingReport = reportRepository.findById(report.getId());
-            if (existingReport.isPresent()) {
-                Report reportBd = existingReport.get();
+    // EDITAR REPORTE (PATCH o PUT)
+    public Optional<Report> edit(Report report) {
+        Optional<Report> existingReport = reportRepository.findById(report.getId());
+        if (existingReport.isPresent()) {
+            Report reportBd = existingReport.get();
 
-                if (report.getTitle() != null) {
-                    reportBd.setTitle(report.getTitle());
-                }
-                if (report.getDate() != null) {
-                    reportBd.setDate(report.getDate());
-                }
-                if (report.getCategory() != null) {
-                    reportBd.setCategory(report.getCategory());
-                }
-
-                reportRepository.save(reportBd);
-                return Optional.of(reportBd);
+            if (report.getTitle() != null) {
+                reportBd.setTitle(report.getTitle());
             }
-            return Optional.empty();
+            if (report.getDate() != null) {
+                reportBd.setDate(report.getDate());
+            }
+            if (report.getCategory() != null) {
+                reportBd.setCategory(report.getCategory());
+            }
+            if (report.getDescription() != null) {
+                reportBd.setDescription(report.getDescription());
+            }
+
+            return Optional.of(reportRepository.save(reportBd));
         }
+        return Optional.empty();
     }
+}

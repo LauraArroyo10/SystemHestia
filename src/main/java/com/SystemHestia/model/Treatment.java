@@ -17,6 +17,7 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
@@ -43,12 +44,12 @@ public class Treatment {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private Status Status;
+    private Status status;  // <-- ESTE CAMPO ERA EL PROBLEMA
 
     @Column(length = 500)
     private String observations;
 
     @Column(name = "responsible_doctor")
     private String responsibleDoctor;
-
 }
+

@@ -28,5 +28,4 @@ public class Medicine {
     private MedicineType medicineType;
 
 
-
 }

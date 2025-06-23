@@ -113,5 +113,11 @@ public class MedicineService {
         return null;
     }
 
+    public long countAvailableMedicines() {
+        return repository.count();
+
+    }
+
+
 
 }

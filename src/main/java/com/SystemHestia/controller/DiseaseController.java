@@ -17,16 +17,15 @@ public class DiseaseController {
     private DiseaseService service;
 
 
-    //GET ALL
+    // GET ALL
     @GetMapping
-    public ResponseEntity<?> getAll(){
-        List<?> disease = service.getAll();
-        if(disease ==null || disease.isEmpty()){
-            return ResponseEntity.ok("No existe ese medicamento");
+    public ResponseEntity<?> getAll() {
+        List<Disease> diseases = service.getAll();
+        if (diseases == null || diseases.isEmpty()) {
+            return ResponseEntity.ok("No existen enfermedades registradas");
         }
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(diseases);
     }
-
 
     //GET ALL BY ID
     @GetMapping ("{id}")

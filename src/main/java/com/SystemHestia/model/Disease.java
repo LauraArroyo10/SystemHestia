@@ -18,6 +18,8 @@ public class Disease {
     private Integer id;
     private String name;
     private String description;
+    @Column(nullable = true)
     private String recommendation;
+
 
 }//class end

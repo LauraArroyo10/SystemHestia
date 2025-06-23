@@ -2,13 +2,15 @@ package com.SystemHestia.repository;
 
 import com.SystemHestia.model.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-//cuando aparece Id ES Integer
+import java.util.List;
 
-public interface ReportJpaRepository extends JpaRepository <Report, Integer> {
+@Repository
+public interface ReportJpaRepository extends JpaRepository<Report, Integer> {
 
-//List<Report> findByCreatedDate(LocalDate date);
+    List<Report> findByPatientId(Integer patientId);
 
-
-    }
-
+    // Si activás la relación con Medicine en Report
+    List<Report> findByMedicineId(Integer medicineId);
+}
