@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "medications")
+
 public class Medicine {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,11 @@ public class Medicine {
     private String name;
     private String sideEffects;
     private String instructions;
-    private String type;
     private LocalDate expirationDate;
     private BigDecimal quantity;
+    @Enumerated(EnumType.STRING)
+    private MedicineType medicineType;
+
+
 
 }

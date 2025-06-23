@@ -1,11 +1,14 @@
 package com.SystemHestia.service;
 
+import com.SystemHestia.model.Disease;
+import com.SystemHestia.model.Patient;
 import com.SystemHestia.model.User;
 import com.SystemHestia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -60,5 +63,17 @@ public class UserService {
         }
         return null;
     }
+    public boolean existByName(String name) {
+        return userRepository.existsByName(name);
+    }
+
+    public boolean existsById(Integer id) {
+        return userRepository.existsById(id);
+    }
+
+
+
+
+
 
 }
