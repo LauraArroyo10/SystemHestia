@@ -47,7 +47,7 @@ public class MedicineController {
 
 
     //PUT
-    @PutMapping
+    @PutMapping("/medicine/{id}")
     public ResponseEntity<?> put(@RequestBody Medicine medicine){
         if (service.existsById(medicine.getId())){
 
