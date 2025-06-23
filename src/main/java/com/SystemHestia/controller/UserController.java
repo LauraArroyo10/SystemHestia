@@ -52,16 +52,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un problema para registrar");
     }
 
-    @PostMapping("/signUp")
-    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setRole(Role.valueOf(userDTO.getRole()));
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
-    }
+//    @PostMapping("/signUp")
+//    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
+//        User user = new User();
+//        user.setName(userDTO.getName());
+//        user.setEmail(userDTO.getEmail());
+//        user.setPassword(userDTO.getPassword());
+//        user.setRole(Role.valueOf(userDTO.getRole()));
+//        User createdUser = userService.createUser(user);
+//        return ResponseEntity.status(201).body(createdUser);
+//    }
 
     @PostMapping("/signUp")
     public ResponseEntity<User> signUp(@Valid @RequestBody UserDTO userDTO) {
