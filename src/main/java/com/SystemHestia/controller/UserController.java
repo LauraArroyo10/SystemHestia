@@ -1,6 +1,8 @@
 package com.SystemHestia.controller;
 
+import com.SystemHestia.dto.LoginDTO;
 import com.SystemHestia.dto.UserDTO;
+import com.SystemHestia.model.Role;
 import com.SystemHestia.model.User;
 import com.SystemHestia.service.UserService;
 import jakarta.validation.Valid;
@@ -8,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -41,7 +43,12 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
-        User createdUser = userService.createUser(new User());
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+        user.setRole(Role.valueOf(userDTO.getRole()));
+        User createdUser = userService.createUser(user);
         return ResponseEntity.status(201).body(createdUser);
     }
 
@@ -73,6 +80,20 @@ public class UserController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+
+
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
+        User user = userService.getUserByEmail(loginDTO.getEmail());
+
+        if (user != null && user.getPassword().equals(loginDTO.getPassword())) {
+            return ResponseEntity.ok(user); // O podés devolver solo algunos datos si querés más seguridad
+        } else {
+            return ResponseEntity.status(401).body("Credenciales inválidas");
+        }
     }
 
 }

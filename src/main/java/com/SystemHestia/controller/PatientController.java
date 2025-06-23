@@ -30,7 +30,6 @@ public ResponseEntity<List<Patient>> getAll() {
 
 
 
-
 //GET ALL BY ID
 @GetMapping ("{id}")
     public Patient get(@PathVariable int id){

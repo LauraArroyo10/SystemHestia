@@ -2,10 +2,10 @@ package com.SystemHestia.model;
 
 public enum MedicineType {
 
-    TOPICALS ("Tópico"),
-    LIQUIDS ("Líquido"),
-    SOLIDS ("Sólido"),
-    SEMISOLIDS ("Semi sólido");
+    TOPICALS ("Topico"),
+    LIQUIDS ("Liquido"),
+    SOLIDS ("Solido"),
+    SEMISOLIDS ("Semi solido");
 
     private String type;
 
