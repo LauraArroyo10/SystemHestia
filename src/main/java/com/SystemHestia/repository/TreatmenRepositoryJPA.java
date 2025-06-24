@@ -1,5 +1,4 @@
 package com.SystemHestia.repository;
-
 import com.SystemHestia.model.Treatment;
 import org.springframework.data.jpa.repository.JpaRepository;
 

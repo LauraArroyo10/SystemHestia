@@ -17,19 +17,18 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 
-
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "medicine_id", nullable = false)
     private Medicine medicine;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease disease;
 
@@ -50,7 +49,7 @@ public class Treatment {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    @Column(length = 500)
+    @Column(length = 100)
     private String observations;
 
 }

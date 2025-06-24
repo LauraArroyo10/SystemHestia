@@ -1,6 +1,4 @@
 package com.SystemHestia.repository;
-
-import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Medicine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

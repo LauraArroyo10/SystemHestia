@@ -16,9 +16,15 @@
 //Esto define cómo se comporta la carga de datos cuando hacés una consulta.
 //EAGER (ansioso): el objeto relacionado se carga automáticamente junto con la entidad principal.
         //Ej: si buscás un Treatment, también se traerá automáticamente el Patient, Medicine y Disease asociados.
+//fetch eager viene por defecto al poner el @ManyToOne o simialres
 
 //cascade = CascadeType.MERGE) > con esto se hace un enlace entre las entidades, por eso si se pide que cargue
 //la entidad de tratamiento, no lo va a hacer porque necesita que ya exista el paciente
 
 // @ToString.Exclude:Es una anotación de Lombok que evita que un campo se incluya automáticamente en
 // //el metodo toString() que genera @ToString.
+
+//usos de dtos para manejar accesos: https://www.youtube.com/shorts/eMvI1xF1nS8
+
+//crear login
+

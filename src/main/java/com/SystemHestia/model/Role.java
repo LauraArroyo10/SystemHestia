@@ -4,7 +4,7 @@ public enum Role {
     //profile constants
     ADMIN("Administrador"),
     GUEST("Invitado"),
-    KID("Menor de edad");
+    JUNIOR("Menor de edad");
 
     private String role;
 
@@ -14,7 +14,6 @@ public enum Role {
     }
 
     public String getRole() {
-
        return role;
     }
 

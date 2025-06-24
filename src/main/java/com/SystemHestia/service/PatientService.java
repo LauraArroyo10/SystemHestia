@@ -1,13 +1,9 @@
 package com.SystemHestia.service;
-
-import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Patient;
 import com.SystemHestia.repository.DiseaseRepositoryJPA;
 import com.SystemHestia.repository.PatientRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

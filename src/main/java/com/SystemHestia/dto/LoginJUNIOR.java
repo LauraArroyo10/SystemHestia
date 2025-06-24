@@ -1,4 +1,6 @@
 package com.SystemHestia.dto;
 
-public class LoginKID {
+public class LoginJUNIOR {
+
+
 }

@@ -2,8 +2,6 @@ package com.SystemHestia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -23,7 +21,7 @@ public class Medicine {
     private String sideEffects;
     private String instructions;
     private LocalDate expirationDate;
-    private BigDecimal quantity;
+    private Double quantity;
     @Enumerated(EnumType.STRING)
     private MedicineType medicineType;
 

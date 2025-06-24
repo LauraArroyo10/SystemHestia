@@ -2,7 +2,6 @@ package com.SystemHestia.controller;
 
 
 import com.SystemHestia.dto.TreatmentDTO;
-import com.SystemHestia.model.Patient;
 import com.SystemHestia.model.Treatment;
 import com.SystemHestia.service.TreatmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class TreatmentController {
         if (service.existsById(id)) {
             return ResponseEntity.ok(service.getTreatment(id));
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encuentra tratamiento con "+id);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encuentra tratamiento");
     }
 
 
@@ -48,7 +47,7 @@ public class TreatmentController {
         if (newTreatment.isPresent()) {
             return ResponseEntity.ok(newTreatment.get());
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha podido generar tratamiento");
         }
     }
 
@@ -57,9 +56,9 @@ public class TreatmentController {
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         if (service.existsById(id)) {
             service.deleteById(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Tratamiento eliminado exitosamente");
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se puede eliminar algo que no existe");
     }
 
 
