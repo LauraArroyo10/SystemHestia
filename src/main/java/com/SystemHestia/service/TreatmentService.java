@@ -21,7 +21,7 @@ public class TreatmentService {
     @Autowired
     private MedicineRepositoryJPA medicineRepository;
     @Autowired
-    DiseaseRepositoryJPA diseaseRepository;
+   private DiseaseRepositoryJPA diseaseRepository;
 
 
 
