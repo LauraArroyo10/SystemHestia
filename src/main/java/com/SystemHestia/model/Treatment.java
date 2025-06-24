@@ -49,7 +49,7 @@ public class Treatment {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    @Column(length = 100)
+    @Column(length = 1000)
     private String observations;
 
 }
