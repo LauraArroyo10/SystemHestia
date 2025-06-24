@@ -20,15 +20,15 @@ public class ReportService {
         return reportRepository.findAll();
     }
 
-    // OBTENER REPORTES DE PACIENTE
-    public List<Report> getReportsByPatientId(Integer patientId) {
-        return reportRepository.findByPatientId(patientId);
-    }
+//    // OBTENER REPORTES DE PACIENTE
+//    public List<Report> getReportsByPatientId(Integer patientId) {
+//        return reportRepository.findByPatientId(patientId);
+//    }
 
     // OBTENER REPORTES DE MEDICAMENTOS (si activás la relación)
-    public List<Report> getReportsByMedicineId(Integer medicineId) {
-        return reportRepository.findByMedicineId(medicineId);
-    }
+//    public List<Report> getReportsByMedicineId(Integer medicineId) {
+//        return reportRepository.findByMedicineId(medicineId);
+//    }
 
     // AÑADIR NUEVO REPORTE
     public Report add(Report report) {
@@ -49,7 +49,7 @@ public class ReportService {
         return report;
     }
 
-    // EDITAR REPORTE (PATCH o PUT) SIN LAMBDA
+    // EDITAR
     public Optional<Report> edit(Report report) {
         Optional<Report> existingReport = reportRepository.findById(report.getId());
         if (existingReport.isPresent()) {
