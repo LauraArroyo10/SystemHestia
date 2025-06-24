@@ -1,12 +1,9 @@
 package com.SystemHestia.service;
-import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Patient;
 import com.SystemHestia.repository.DiseaseRepositoryJPA;
 import com.SystemHestia.repository.PatientRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,31 +24,15 @@ public class PatientService {
 
     //GET BY ID
     public Patient findById(Integer id) {
-        Optional<Patient> patient = repository.findById(id);
-        if (patient.isEmpty()) {
-            throw new RuntimeException("Paciente no encontrado");
-        }
-        return patient.get();
+        return repository.findById(id).get();
     }
 
     //POST
-//    public Patient add(Patient patient) {
-//        return repository.save(patient);
-//    }
-
-
     public Patient add(Patient patient) {
-        if (patient.getPrimaryDisease() != null) {
-            Optional<Disease> optionalDisease = diseaseRepositoryJPA.findById(patient.getPrimaryDisease().getId());
-            if (!optionalDisease.isPresent()) {
-                throw new RuntimeException("La enfermedad no existe en la base de datos.");
-            }
-            patient.setPrimaryDisease(optionalDisease.get());
-        }
         return repository.save(patient);
     }
 
-
+   //PATCH
     public Patient edit(Patient patient) {
         Patient element = getPatient(patient.getId());
 

@@ -30,23 +30,35 @@ public ResponseEntity<List<Patient>> getAll() {
 
 
 
-//GET ALL BY ID
+
+//GET PACIENT BY ID
 @GetMapping ("{id}")
-    public Patient get(@PathVariable int id){
-    return service.findById(id);
+    public ResponseEntity<?> get(@PathVariable int id){
+    if (service.existsById(id)){
+        return ResponseEntity.ok(service.findById(id));
+    }
+    return ResponseEntity.notFound().build();
 }
 
 
 //POST
     @PostMapping
-    public Patient post(@RequestBody Patient patient){
-    return service.add(patient);}
+    public ResponseEntity<?> post(@RequestBody Patient patient){
+    Patient create = service.add(patient);
+    if (create!=null){
+        return ResponseEntity.status(HttpStatus.CREATED).body(create);
+    }
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un problema y no se pudo crear el paciente");
+}
 
 
 //PUT
     @PutMapping
-    public Patient put(@RequestBody Patient patient){
-    return service.update(patient);
+    public ResponseEntity<?> put(@RequestBody Patient patient){
+    if (service.existsById(patient.getId())){
+        return ResponseEntity.ok(service.update(patient));
+    }
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ese id no se encuentra registrado");
     }
 
 
@@ -64,7 +76,10 @@ public ResponseEntity<List<Patient>> getAll() {
 //PATCH
 @PatchMapping
 public ResponseEntity<?> patch (@RequestBody Patient patient) {
-    return ResponseEntity.ok(service.edit(patient));
+    if (service.existsById(patient.getId())){
+       return ResponseEntity.ok(service.edit(patient));
+    }
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ese id no está registrado");
 }
 
 }//class end

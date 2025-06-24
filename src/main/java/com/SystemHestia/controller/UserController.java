@@ -7,8 +7,11 @@ import com.SystemHestia.model.User;
 import com.SystemHestia.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,7 +26,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
         User user = userService.getUserById(id);
@@ -35,20 +37,24 @@ public class UserController {
     }
 
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
+//    @PostMapping
+//    public ResponseEntity<User> createUser(@RequestBody User user) {
+//        User createdUser = userService.createUser(user);
+//        return ResponseEntity.status(201).body(createdUser);
+//    }
+
+    @PostMapping("/signUp")
+    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
+        return ResponseEntity.ok(userService.createUser(userDTO));
     }
 
-
     @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
         User updatedUser = userService.updateUser(user);
         if (updatedUser != null) {
-            return ResponseEntity.ok(updatedUser);
+            return ResponseEntity.ok("usario actualizado");
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok("Ups, ese usuario no ha podido ser encontrado");
         }
     }
 
@@ -67,26 +73,18 @@ public class UserController {
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         if (userService.existsById(id)) {
             userService.deleteUser(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok("Usuario eliminado");
         }
         return ResponseEntity.notFound().build();
     }
 
 
-//Registrarse
-    @PostMapping("/signUp")
-    public ResponseEntity<User> createSignUpUser(@Valid @RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setRole(Role.valueOf(userDTO.getRole()));
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
-    }
 
-//Entrar como admin
-//Entrar como invitado
-//Entrar como menor de edad
+//login
+//login guest
+//login junior
 
-}//class ends
+
+}//class end
+
+

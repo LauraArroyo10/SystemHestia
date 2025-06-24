@@ -41,8 +41,8 @@ public class MedicineController {
 
     //POST
     @PostMapping
-    public Medicine post(@RequestBody Medicine medicine){
-        return service.add(medicine);
+    public ResponseEntity<Medicine> post(@RequestBody Medicine medicine){
+        return ResponseEntity.ok(service.add(medicine));
     }
 
 
