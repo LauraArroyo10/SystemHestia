@@ -25,6 +25,7 @@ public class Medicine {
     private LocalDate expirationDate;
     private BigDecimal quantity;
     @Enumerated(EnumType.STRING)
+
     private MedicineType medicineType;
 
 

@@ -20,21 +20,18 @@ public class Patient{
     private String allergies;
     private String description;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "disease_id", nullable = true)
-    private Disease primaryDisease;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "disease_id", nullable = false)
+    private Disease primaryDisease;
 
 
     private String name;
 
 
 
-    @Column(name = "role")
-    private String role;
-
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
 }

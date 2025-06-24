@@ -1,9 +1,8 @@
 package com.SystemHestia.controller;
 
-import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Medicine;
-import com.SystemHestia.service.DiseaseService;
 import com.SystemHestia.service.MedicineService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,26 +19,31 @@ public class MedicineController {
 
     //GET ALL
     @GetMapping
-    public ResponseEntity<?> getAll(){
-        List<?> medicines = service.getAll();
-        if(medicines ==null || medicines.isEmpty()){
-            return ResponseEntity.ok("No existen medicamentos");
+    public ResponseEntity<List<Medicine>> getAll() {
+        List<Medicine> medicines = service.getAll();
+        if (medicines.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(medicines);
     }
 
 
-    //GET ALL BY ID
-    @GetMapping ("{id}")
-    public Medicine get(@PathVariable int id){
-        return service.findById(id);
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> get(@PathVariable int id) {
+        Medicine medicine = service.findById(id);
+        if (medicine == null) {
+            return ResponseEntity.status(404).body("No se encontro el medicamento con ID: " + id);
+        }
+        return ResponseEntity.ok(medicine);
     }
 
 
     //POST
     @PostMapping
-    public Medicine post(@RequestBody Medicine medicine){
-        return service.add(medicine);}
+    public Medicine post(@Valid @RequestBody Medicine medicine){
+        return service.add(medicine);
+    }
 
 
     //PUT
@@ -71,7 +75,7 @@ public class MedicineController {
         if (service.existsById(medicine.getId())){
             return ResponseEntity.ok(service.edit(medicine));
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El id "+medicine.getId()+" no está registrado");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El id "+medicine.getId()+" no esta registrado");
     }
 
     @GetMapping("/count")

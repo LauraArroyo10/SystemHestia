@@ -21,18 +21,10 @@ public class Report {
    private String category;
    private String description;
 
-   @ManyToOne(fetch = FetchType.EAGER)
+   @ManyToOne()
    @JoinColumn(name = "patient_id", nullable = false)
    private Patient patient;
    private Medicine medicine;
 
-   // Si luego vas a usar estas relaciones
-   // @ManyToOne(fetch = FetchType.EAGER)
-   // @JoinColumn(name = "treatment_id", nullable = true)
-   // private Treatment treatment;
-
-   // @ManyToOne(fetch = FetchType.EAGER)
-   // @JoinColumn(name = "medicine_id", nullable = true)
-   // private Medicine medicine;
 
 }

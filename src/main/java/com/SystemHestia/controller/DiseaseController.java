@@ -40,12 +40,6 @@ public class DiseaseController {
         return service.add(disease);}
 
 
-    //PUT
-    @PutMapping
-    public Disease put(@RequestBody Disease disease){
-        return service.edit(disease);
-    }
-
 
     //DELETE
     @DeleteMapping("{id}")
@@ -58,10 +52,5 @@ public class DiseaseController {
     }
 
 
-    //PATCH
-    @PatchMapping
-    public ResponseEntity<?> patch (@RequestBody Disease disease) {
-
-        return ResponseEntity.ok(service.edit(disease));
-    }
+    //
 }

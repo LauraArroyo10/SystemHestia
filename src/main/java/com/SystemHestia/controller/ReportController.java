@@ -8,62 +8,65 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
 @RequestMapping("/report")
 public class ReportController {
 
     @Autowired
     ReportService reportService;
-
-    // GET ALL
     @GetMapping
-    public List<Report> getAll() {
-        return reportService.getAll();
-    }
 
-    // GET Reports by Patient ID
-    @GetMapping("/patient/{patientId}")
-    public List<Report> getReportsByPatient(@PathVariable Integer patientId) {
-        return reportService.getReportsByPatientId(patientId);
+    //GET All
+    public ResponseEntity<List<Report>> getAllReports() {
+        List<Report> reports = reportService.getAll();
+        if (reports.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(reports);
+        }
     }
-
     // GET by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
         Optional<Report> report = reportService.getById(id);
-        return report.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    // POST
-    @PostMapping
-    public ResponseEntity<Report> addReport(@RequestBody Report report) {
-        Report saved = reportService.add(report);
-        return ResponseEntity.ok(saved);
+        if (report.isPresent()) {
+            return ResponseEntity.ok(report.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // PUT
     @PutMapping
     public ResponseEntity<?> editReport(@RequestBody Report report) {
         Optional<Report> updated = reportService.edit(report);
-        return updated.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        if (updated.isPresent()) {
+            return ResponseEntity.ok(updated.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // PATCH
     @PatchMapping
     public ResponseEntity<?> patchReport(@RequestBody Report report) {
         Optional<Report> updated = reportService.edit(report);
-        return updated.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        if (updated.isPresent()) {
+            return ResponseEntity.ok(updated.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteReport(@PathVariable Integer id) {
         Optional<Report> deleted = reportService.delete(id);
-        return deleted.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        if (deleted.isPresent()) {
+            return ResponseEntity.ok(deleted.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Service
 public class ReportService {
 
     @Autowired
@@ -39,14 +40,16 @@ public class ReportService {
         return reportRepository.findById(id);
     }
 
-    // ELIMINAR REPORTE
+    // ELIMINAR REPORTE SIN LAMBDA
     public Optional<Report> delete(Integer id) {
         Optional<Report> report = reportRepository.findById(id);
-        report.ifPresent(r -> reportRepository.deleteById(id));
+        if (report.isPresent()) {
+            reportRepository.deleteById(id);
+        }
         return report;
     }
 
-    // EDITAR REPORTE (PATCH o PUT)
+    // EDITAR REPORTE (PATCH o PUT) SIN LAMBDA
     public Optional<Report> edit(Report report) {
         Optional<Report> existingReport = reportRepository.findById(report.getId());
         if (existingReport.isPresent()) {
@@ -65,8 +68,10 @@ public class ReportService {
                 reportBd.setDescription(report.getDescription());
             }
 
-            return Optional.of(reportRepository.save(reportBd));
+            Report saved = reportRepository.save(reportBd);
+            return Optional.of(saved);
+        } else {
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 }
