@@ -3,8 +3,8 @@ package com.SystemHestia.model;
 public enum Role {
     //profile constants
     ADMIN("Administrador"),
-    VIEWER("Espectador"),
-    KID("Menor de edad");
+    GUEST("Invitado"),
+    JUNIOR("Menor de edad");
 
     private String role;
 
@@ -14,7 +14,6 @@ public enum Role {
     }
 
     public String getRole() {
-
        return role;
     }
 

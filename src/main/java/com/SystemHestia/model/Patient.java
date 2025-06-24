@@ -20,9 +20,8 @@ public class Patient{
     private String allergies;
     private String description;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+
+    @ManyToOne
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease primaryDisease;
 

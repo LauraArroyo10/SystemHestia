@@ -1,9 +1,7 @@
 package com.SystemHestia.controller;
 
 import com.SystemHestia.model.Disease;
-import com.SystemHestia.model.Patient;
 import com.SystemHestia.service.DiseaseService;
-import com.SystemHestia.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +20,7 @@ public class DiseaseController {
     public ResponseEntity<?> getAll(){
         List<?> disease = service.getAll();
         if(disease ==null || disease.isEmpty()){
-            return ResponseEntity.ok("No existe ese medicamento");
+            return ResponseEntity.ok("No existe registro de enfermedad");
         }
         return ResponseEntity.ok(service.getAll());
     }
@@ -30,22 +28,18 @@ public class DiseaseController {
 
     //GET ALL BY ID
     @GetMapping ("{id}")
-    public Disease get(@PathVariable int id){
-        return service.findById(id);
+    public ResponseEntity<Disease> getId(@PathVariable int id){
+
+        return ResponseEntity.ok(service.findById(id)) ;
     }
 
 
     //POST
     @PostMapping
-    public Disease post(@RequestBody Disease disease){
-        return service.add(disease);}
-
-
-    //PUT
-    @PutMapping
-    public Disease put(@RequestBody Disease disease){
-        return service.edit(disease);
+    public ResponseEntity<?> post(@RequestBody Disease disease){
+        return ResponseEntity.ok(service.add(disease));
     }
+
 
 
     //DELETE
@@ -59,10 +53,5 @@ public class DiseaseController {
     }
 
 
-    //PATCH
-    @PatchMapping
-    public ResponseEntity<?> patch (@RequestBody Disease disease) {
-
-        return ResponseEntity.ok(service.edit(disease));
-    }
+    //
 }

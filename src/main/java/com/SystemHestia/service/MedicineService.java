@@ -1,8 +1,5 @@
 package com.SystemHestia.service;
-
-
 import com.SystemHestia.model.Medicine;
-import com.SystemHestia.repository.MedicationRepositoryJPA;
 import com.SystemHestia.repository.MedicineRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +10,6 @@ import java.util.Optional;
 @Service
 public class MedicineService {
     @Autowired
-
     private MedicineRepositoryJPA repository;
 
     //GET ALL
@@ -34,6 +30,7 @@ public class MedicineService {
 
     //POST
     public Medicine add(Medicine medicine) {
+
         return repository.save(medicine);
     }
 
