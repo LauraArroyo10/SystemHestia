@@ -57,7 +57,17 @@ public class ReportController {
             return ResponseEntity.notFound().build();
         }
     }
+    // POST
 
+    @PostMapping
+    public ResponseEntity<Report> addReport(@RequestBody Report report) {
+        Report savedReport = reportService.add(report);
+        if (savedReport != null && savedReport.getId() != null) {
+            return ResponseEntity.ok(savedReport);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteReport(@PathVariable Integer id) {

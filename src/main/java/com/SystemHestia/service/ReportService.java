@@ -1,6 +1,8 @@
 package com.SystemHestia.service;
 
+import com.SystemHestia.dto.ReportDTO;
 import com.SystemHestia.model.Report;
+import com.SystemHestia.model.Treatment;
 import com.SystemHestia.repository.ReportJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,4 +76,21 @@ public class ReportService {
             return Optional.empty();
         }
     }
+
+        public Report add(ReportDTO reportDTO) {
+//            Patient patient = patientService.getPatient(reportDTO.getPatientId());
+//            Medicine medicine = medicineService.getMedicine(reportDTO.getMedicineId());
+//            Treatment treatment = treatmentService.getTreatment(reportDTO.getTreatmentId());
+
+            Report report = new Report();
+            report.setTitle(reportDTO.getTitle());
+            report.setDate(reportDTO.getDate());
+            report.setCategory(reportDTO.getCategory());
+            report.setDescription(reportDTO.getDescription());
+//            report.setPatient(patient);
+//            report.setMedicine(medicine);
+//            report.setTreatment(treatment);
+
+            return reportRepository.save(report);
+        }
 }
