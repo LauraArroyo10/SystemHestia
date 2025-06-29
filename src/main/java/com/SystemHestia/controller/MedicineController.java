@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/medicine")
 public class MedicineController {
@@ -41,8 +41,8 @@ public class MedicineController {
 
     //POST
     @PostMapping
-    public Medicine post(@Valid @RequestBody Medicine medicine){
-        return service.add(medicine);
+    public ResponseEntity<Medicine> post(@RequestBody Medicine medicine){
+        return ResponseEntity.ok(service.add(medicine));
     }
 
 

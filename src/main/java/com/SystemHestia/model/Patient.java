@@ -21,7 +21,7 @@ public class Patient{
     private String description;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "disease_id", nullable = false)
     private Disease primaryDisease;
 

@@ -4,7 +4,7 @@ import com.SystemHestia.model.Disease;
 import com.SystemHestia.model.Medicine;
 import com.SystemHestia.model.Patient;
 import com.SystemHestia.model.Status;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @ToString
 
 public class TreatmentDTO {
-    @NotNull(message = "El campo es obligatorio")
+    @NotBlank(message = "El campo es obligatorio")
     private Integer id;
     private Patient patient;
     private Medicine medicine;
